@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
+body {
+    align-content: center;
+}
+
+h1 {
+    font-family: 'Kdam Thmor Pro', sans-serif;
+    text-align: center;
+    font-size: 2.5rem;
+    padding: 0px;
+    margin: 20px;
+}
+
+.top-buttons {
+    text-align: center;
+}
+
+.top-buttons > button {
+    font-family: 'Kdam Thmor Pro', sans-serif;
+    font-size: 1.5rem;
+    padding: 10px;
+    border: 2px solid black;
+    margin: 0px 20px 20px;
+}
+
+/* .start {
+    
+}
+
+.pause-unpause {
+    
+}
+
+.quit {
+    
+} */
+
+.round-score-and-timer {
+    font-family: 'Kdam Thmor Pro', sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.round, .score, .timer {
+    display: inline-block;
+    width: 232px;
+    height: 80px;
+    border: 2px solid black;
+    border-bottom: 0px;
+}
+
+.round {
+    border-right-width: 1px;
+}
+
+.score {
+    border-left-width: 1px;
+    border-right-width: 1px;
+}
+
+.timer {
+    border-left-width: 1px;
+}
+
+.game-area-div {
+    font-size: 0px;
+    text-align: center;
+}
+
+.game-area {
+    display: inline-block;
+    width: 700px;
+    height: 500px;
+    border: 2px solid black;
+}
+
+.question-and-answer {
+    font-family: 'Kdam Thmor Pro', sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.question, .answer {
+    display: inline-block;
+    width: 349px;
+    height: 300px;
+    border: 2px solid black;
+    border-top: 0px;
+}
+
+.question {
+    border-right-width: 1px;
+}
+
+.answer {
+    border-left-width: 1px;
+}

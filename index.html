@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Memorize the Shapes</title>
+  </head>
+  <body>
+    <h1>Memorize the Shapes</h1>
+    <div class="top-buttons">
+      <button type="button" class="start">Start</button>
+      <!-- Difficulty selection and what to look for(colors, size, direction of rotation)
+      Account for colorblindness - add a colorblind option
+      Maybe have controls/help/tutorial section and show possible shapes(explain what shapes will look like)
+      if shapes will be regular, will they rotate on hard mode
+      Make it clear if sides are same(like in square/rectangle) - use markings -->
+      
+      <button type="button" class="pause-unpause">Pause</button>
+      <!-- Hide game during pause
+      Have "game paused..." appear in game area -->
+      <button type="button" class="quit">Quit</button>
+      <!-- Have pause automatically triggered and ask player "are you sure?" they want to quit -->
+    </div>
+    <div class="round-score-and-timer">
+      <span class="round">
+        Round<br>0/0</span><span class="score">
+        Score<br>0</span><span class="timer">
+        Timer<br>0 s</span>
+    </div>
+    <div class="game-area-div">
+      <span class="game-area"></span>
+    </div>
+    <div class="question-and-answer">
+      <span class="question">
+        Question</span><span class="answer">
+        Answer</span>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
