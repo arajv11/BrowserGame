@@ -9,7 +9,7 @@
   <body>
     <h1>Memorize the Shapes</h1>
     <div class="top-buttons">
-      <button type="button" class="start">Start</button>
+      <button type="button" id="start">Start</button>
       <!-- Difficulty selection and what to look for(colors, size, direction of rotation)
       Account for colorblindness - add a colorblind option
       Maybe have controls/help/tutorial section and show possible shapes(explain what shapes will look like)
@@ -24,18 +24,19 @@
     </div>
     <div class="round-score-and-timer">
       <span class="round">
-        Round<br>0/0</span><span class="score">
+        Round<br>currentRound/totalRounds</span><span class="score">
         Score<br>0</span><span class="timer">
-        Timer<br>0 s</span>
+        Timer<br>remainingTime s</span>
     </div>
-    <div class="game-area-div">
-      <span class="game-area"></span>
+    <div id="div1" class="game-area-div">
+      <div id ="div2" class="game-area"></div>
     </div>
-    <div class="question-and-answer">
+    <div id="div3" class="question-and-answer">
       <span class="question">
         Question</span><span class="answer">
         Answer</span>
     </div>
+    <div class="circle"></div>
     <script src="script.js"></script>
   </body>
 </html>

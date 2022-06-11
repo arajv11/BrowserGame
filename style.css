@@ -24,7 +24,7 @@ h1 {
     margin: 0px 20px 20px;
 }
 
-/* .start {
+/* #start {
     
 }
 
@@ -95,4 +95,12 @@ h1 {
 
 .answer {
     border-left-width: 1px;
+}
+
+.circle {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background: black;
+    border-radius: 50%
 }
