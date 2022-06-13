@@ -21,14 +21,10 @@ h1 {
     font-size: 1.5rem;
     padding: 10px;
     border: 2px solid black;
-    margin: 0px 20px 20px;
+    margin: 0px 30px 20px;
 }
 
 /* #start {
-    
-}
-
-.pause-unpause {
     
 }
 
@@ -36,31 +32,28 @@ h1 {
     
 } */
 
-.round-score-and-timer {
+.round-and-score {
     font-family: 'Kdam Thmor Pro', sans-serif;
     font-size: 1.5rem;
     text-align: center;
 }
 
-.round, .score, .timer {
+#round, .score {
     display: inline-block;
-    width: 232px;
+    width: 349px;
     height: 80px;
     border: 2px solid black;
     border-bottom: 0px;
 }
 
-.round {
+#round {
+    border-left-width: 2px;
     border-right-width: 1px;
 }
 
 .score {
     border-left-width: 1px;
-    border-right-width: 1px;
-}
-
-.timer {
-    border-left-width: 1px;
+    border-right-width: 2px;
 }
 
 .game-area-div {
