@@ -8,29 +8,20 @@
   </head>
   <body>
     <h1>Memorize the Shapes</h1>
-    <div class="top-buttons">
+    <div id="top-buttons">
       <button type="button" id="start">Start</button>
-      <!-- Difficulty selection and what to look for(colors, size, direction of rotation)
+      <!-- # of rounds(3-25)
       Account for colorblindness - add a colorblind option
       Maybe have controls/help/tutorial section and show possible shapes(explain what shapes will look like)
-      if shapes will be regular, will they rotate on hard mode
-      Make it clear if sides are same(like in square/rectangle) - use markings -->
-      
-      <button type="button" class="quit">Quit</button>
-      <!-- Have pause automatically triggered and ask player "are you sure?" they want to quit -->
+      Have pause automatically triggered and ask player "are you sure?" they want to quit -->
     </div>
     <div class="round-and-score">
-      <span id="round">Round<br>0/0</span><span class="score">
+      <span id="round">Round<br>0/0</span><span id="score">
         Score<br>0</span>
     </div>
     <div id="div1" class="game-area-div">
       <div id ="div2" class="game-area"></div>
     </div>
-    <div id="div3" class="question-and-answer">
-      <!-- span class="question">
-        Question<br>How many red?<br>How many black?</span><span class="answer">
-        Answer<br><br></span>
-    </div -->
    
     <script src="script.js"></script>
   </body>
