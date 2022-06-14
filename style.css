@@ -1,24 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
 
 body {
-    align-content: center;
+    text-align: center;
 }
 
 h1 {
+    display: inline-block;
     font-family: 'Kdam Thmor Pro', sans-serif;
     text-align: center;
     font-size: 2.5rem;
-    padding: 0px;
+    padding: 10px;
     margin: 20px;
 }
 
 #top-buttons {
+    display: inline-block;
     text-align: center;
 }
 
 #top-buttons > button {
     font-family: 'Kdam Thmor Pro', sans-serif;
-    font-size: 1.5rem;
+    font-size: 2rem;
     padding: 10px;
     border: 2px solid black;
     margin: 0px 30px 20px;
@@ -70,7 +72,7 @@ h1 {
 
 .question-and-answer {
     font-family: 'Kdam Thmor Pro', sans-serif;
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-align: center;
 }
 
