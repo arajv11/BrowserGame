@@ -18,7 +18,7 @@ h1 {
     text-align: center;
 }
 
-#top-buttons > button {
+#start {
     font-family: 'Kdam Thmor Pro', sans-serif;
     font-size: 2rem;
     padding: 10px;
@@ -26,24 +26,22 @@ h1 {
     margin: 0px 30px 20px;
 }
 
-/* #start {
-    
+#start:hover {
+    background-color: gray;
+    color: yellow;
+    transition: 0.5s;
 }
-
-#quit {
-    
-} */
 
 .round-and-score {
     font-family: 'Kdam Thmor Pro', sans-serif;
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-align: center;
 }
 
 #round, #score {
     display: inline-block;
     width: 349px;
-    height: 80px;
+    height: 99px;
     border: 2px solid black;
     border-bottom: 0px;
 }
@@ -74,22 +72,27 @@ h1 {
     font-family: 'Kdam Thmor Pro', sans-serif;
     font-size: 2rem;
     text-align: center;
+    animation-name: question-and-answer;
+    animation-duration: 2s;
 }
 
-.question, .answer {
-    display: inline-block;
-    width: 349px;
-    height: 300px;
+@keyframes question-and-answer {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.game-button {
+    font-family: 'Kdam Thmor Pro', sans-serif;
+    font-size: 2rem;
+    padding: 10px;
     border: 2px solid black;
-    border-top: 0px;
+    margin: 0px 30px 20px;
 }
 
-.question {
-    border-right-width: 1px;
-}
-
-.answer {
-    border-left-width: 1px;
+.game-button:hover {
+    background-color: gray;
+    color: yellow;
+    transition: 0.5s;
 }
 
 .circle {
