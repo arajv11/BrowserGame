@@ -1,113 +1,174 @@
-@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+let currentRound = 1
+let totalRounds = 5
+let totalPoints = 0
 
-body {
-    text-align: center;
-}
+let topButtons = document.getElementById("top-buttons")
+let start = document.getElementById("start")
+let QAArea = document.getElementById("div2")
 
-h1 {
-    display: inline-block;
-    font-family: 'Kdam Thmor Pro', sans-serif;
-    text-align: center;
-    font-size: 2.5rem;
-    padding: 10px;
-    margin: 20px;
-}
+let colors = ["red", "blue"]
+let shapes = ["circle", "triangle"]
+let red = 0
+let blue = 0
+let circle = 0
+let triangle = 0
 
-#top-buttons {
-    display: inline-block;
-    text-align: center;
-}
+let userEnteredRed = 0
+let userEnteredBlue = 0
 
-#start {
-    font-family: 'Kdam Thmor Pro', sans-serif;
-    font-size: 2rem;
-    padding: 10px;
-    border: 2px solid black;
-    margin: 0px 30px 20px;
-}
+start.addEventListener("click", showImage);
 
-#start:hover {
-    background-color: gray;
-    color: yellow;
-    transition: 0.5s;
-}
+function showImage() {
+    
+    QAArea.classList.add("question-and-answer")
+    QAArea.innerHTML = ""
+    QAArea.innerHTML = `<br>Round starting...`
+    let round = document.getElementById("round")
+    let score = document.getElementById("score")
+    round.innerHTML = `Round<br>${currentRound}/${totalRounds}`
+    score.innerHTML = `Score<br>${totalPoints}`
+    if (currentRound == 1) {
+        let start = document.getElementById("start")
+        start.remove()
+    }
 
-.round-and-score {
-    font-family: 'Kdam Thmor Pro', sans-serif;
-    font-size: 2rem;
-    text-align: center;
-}
+    QAArea.classList.remove("question-and-answer")
+    round.innerHTML = `Round<br>${currentRound}/${totalRounds}`
+    score.innerHTML = `Score<br>${totalPoints}`
+    red = 0
+    blue = 0
+    QAArea.innerHTML = "" 
+    for (let i = 1; i <= currentRound*4; i++) {
+        console.log(QAArea)
+        let shape = document.createElement('div')
+        shape.classList.add(shapes[Math.floor( Math.random() * shapes.length )])
+        let color = colors[Math.floor( Math.random() * colors.length )]
+        if (shape.classList.contains("circle")) {
+            shape.style.background = color
+            circle++
+        } else {
+            shape.style.borderBottomColor = color
+            // shape.setAttribute("border-bottom", `100px solid ${color}`)
+            triangle++
+        }
+        switch (color) {
+            case "red":
+                red++;
+                break;
+            case "blue":
+                blue++;
+                break;
+        }
+        QAArea.append(shape)
+    }
 
-#round, #score {
-    display: inline-block;
-    width: 349px;
-    height: 99px;
-    border: 2px solid black;
-    border-bottom: 0px;
-}
+    setTimeout(function () {
+        console.log("Number of red displayed = "+red)
+        console.log("Number of blue displayed = "+blue)
+        let circleList = document.getElementsByClassName("circle")
+        let triangleList = document.getElementsByClassName("triangle")
+        while (circleList.length > 0) {
+            circleList[circleList[0].remove()]
+        }
+        while (triangleList.length > 0) {
+            triangleList[triangleList[0].remove()]
+        }
 
-#round {
-    border-left-width: 2px;
-    border-right-width: 1px;
-}
+        let QAArea = document.getElementById("div2")
+        QAArea.classList.add("question-and-answer")
+                
+        let titleRed = document.createElement("span");
+        titleRed.innerHTML = `<br>How many red?`;
+        let inputRed = document.createElement("input");
+        inputRed.setAttribute("id", "red");
+        QAArea.append(titleRed, inputRed);
 
-#score {
-    border-left-width: 1px;
-    border-right-width: 2px;
-}
+        let titleBlue = document.createElement("span");
+        titleBlue.innerHTML = `<br>How many blue?`;
+        let inputBlue = document.createElement("input");        
+        inputBlue.setAttribute("id", "blue");
+        QAArea.append(titleBlue, inputBlue);
 
-.game-area-div {
-    font-size: 0px;
-    text-align: center;
-}
+        let titleCircle = document.createElement("span");
+        titleCircle.innerHTML = `<br>How many circles?`;
+        let inputCircle = document.createElement("input");
+        inputCircle.setAttribute("id", "red");
+        QAArea.append(titleCircle, inputCircle);
 
-.game-area {
-    display: inline-block;
-    width: 700px;
-    height: 500px;
-    border: 2px solid black;
-}
+        let titleTriangle = document.createElement("span");
+        titleTriangle.innerHTML = `<br>How many triangles?`;
+        let inputTriangle = document.createElement("input");        
+        inputTriangle.setAttribute("id", "blue");
+        QAArea.append(titleTriangle, inputTriangle);
 
-.question-and-answer {
-    font-family: 'Kdam Thmor Pro', sans-serif;
-    font-size: 2rem;
-    text-align: center;
-    animation-name: question-and-answer;
-    animation-duration: 2s;
-}
+        let submit = document.createElement("button");
+        submit.classList.add("submit", "game-button");
+        submit.textContent = "Submit";
+        QAArea.innerHTML += "<br><br>"      
+        QAArea.append(submit);
+        
+        submit.addEventListener("click", checkQuantity);
 
-@keyframes question-and-answer {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
+    }, 1000)
 
-.game-button {
-    font-family: 'Kdam Thmor Pro', sans-serif;
-    font-size: 2rem;
-    padding: 10px;
-    border: 2px solid black;
-    margin: 0px 30px 20px;
-}
+    function checkQuantity() {
 
-.game-button:hover {
-    background-color: gray;
-    color: yellow;
-    transition: 0.5s;
-}
+        const colorInputs = [...document.querySelectorAll('input')]
+        console.log(colorInputs)
 
-.circle {
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    margin: 12.5px;
-    background-color: black;
-    border-radius: 50%;
-}
+        colorInputs.forEach(colorInput => {
+            if (colorInput.getAttribute("id") == "red") {
+                userEnteredRed = colorInput.value
+            } else {
+                userEnteredBlue = colorInput.value
+            }
+        })
 
-.triangle {
-    display: inline-block;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 100px solid black;
-    margin: 12.5px;
+        console.log("userEnteredRed = " + userEnteredRed)
+        console.log("userEnteredBlue = " + userEnteredBlue)
+
+        let currentRoundPoints = 0;
+            
+        if ((userEnteredRed == red ) && (userEnteredBlue == blue )) {
+            currentRoundPoints += currentRound * 2
+        } else if ((userEnteredRed != red ) && (userEnteredBlue != blue )) {
+            currentRoundPoints += 0
+        } else {
+            currentRoundPoints += currentRound
+        }
+
+        totalPoints += currentRoundPoints
+        let score = document.getElementById("score")
+        score.innerHTML = `Score<br>${totalPoints}`
+
+        // Check round number
+        if (currentRound < totalRounds) {
+            let QAArea = document.getElementById("div2")
+            QAArea.innerHTML = `<br>You scored ${currentRoundPoints} out of ${currentRound*2} points <br> in this round<br>`;
+            currentRound++
+            let nextRoundButton = document.createElement("button");
+            nextRoundButton.textContent = "Next Round";
+            nextRoundButton.classList.add("game-button");
+            QAArea.append(nextRoundButton);
+            nextRoundButton.addEventListener("click", showImage);
+            // Higher score for harder rounds
+            // Score each round depends on # of questions right
+        } else {
+            let topButtons = document.getElementById("top-buttons")
+            let QAArea = document.getElementById("div2")
+            QAArea.innerHTML = "";
+            let gameFinished = document.createElement("text");
+            gameFinished.innerHTML = `<br>You scored ${currentRoundPoints} out of ${currentRound*2} points <br> in this round<br>
+            <br><br>Congrats! Your final score is ${totalPoints}<br> To play again, click the "Start" button above`
+            QAArea.append(gameFinished);
+            let start = document.createElement("button");
+            start.setAttribute("id", "start");
+            start.textContent = "Start";
+            topButtons.append(start)
+            currentRound = 1
+            totalRounds = 5
+            totalPoints = 0
+            start.addEventListener("click", showImage);
+        }
+    }
 }
