@@ -2,70 +2,56 @@
 
 body {
     text-align: center;
+    background-color: chocolate;
 }
 
 h1 {
     display: inline-block;
     font-family: 'Kdam Thmor Pro', sans-serif;
-    text-align: center;
-    font-size: 2.5rem;
-    padding: 10px;
-    margin: 20px;
+    font-size: 3rem;
+    background-color: yellow;
+    padding: 15px;
+    margin: 30px;
+    border: 4px solid black;
 }
 
 #top-buttons {
     display: inline-block;
-    text-align: center;
-}
-
-#start {
-    font-family: 'Kdam Thmor Pro', sans-serif;
-    font-size: 2rem;
-    padding: 10px;
-    border: 2px solid black;
-    margin: 0px 30px 20px;
-}
-
-#start:hover {
-    background-color: gray;
-    color: yellow;
-    transition: 0.5s;
 }
 
 .round-and-score {
     font-family: 'Kdam Thmor Pro', sans-serif;
+    font-weight: 900;
     font-size: 2rem;
-    text-align: center;
 }
 
 #round, #score {
     display: inline-block;
     width: 349px;
     height: 99px;
-    border: 2px solid black;
-    border-bottom: 0px;
+    background-color: yellow;
+    border: 4px solid black;
+    border-bottom-width: 2px;
+    border-radius: 20px;
 }
 
 #round {
-    border-left-width: 2px;
-    border-right-width: 1px;
-}
-
-#score {
-    border-left-width: 1px;
     border-right-width: 2px;
 }
 
-.game-area-div {
-    font-size: 0px;
-    text-align: center;
+#score {
+    border-left-width: 2px;
 }
 
-.game-area {
+#game-area-div {
+    font-size: 0rem;
     display: inline-block;
-    width: 700px;
+    width: 702px;
     height: 500px;
-    border: 2px solid black;
+    border: 4px solid black;
+    border-top-width: 2px;
+    border-radius: 20px;
+    background-color: tan;
 }
 
 .question-and-answer {
@@ -73,7 +59,6 @@ h1 {
     font-size: 2rem;
     text-align: center;
     animation-name: question-and-answer;
-    animation-duration: 2s;
 }
 
 @keyframes question-and-answer {
@@ -85,14 +70,22 @@ h1 {
     font-family: 'Kdam Thmor Pro', sans-serif;
     font-size: 2rem;
     padding: 10px;
-    border: 2px solid black;
-    margin: 0px 30px 20px;
+    border: 4px solid black;
+    border-radius: 30px;
+    margin: 0px 30px;
+    color: dimgray;
 }
 
 .game-button:hover {
     background-color: gray;
     color: yellow;
     transition: 0.5s;
+}
+
+.game-button:active {
+    background-color: darkgreen;
+    color: white;
+    transition: 0s;
 }
 
 .circle {
