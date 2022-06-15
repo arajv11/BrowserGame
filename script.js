@@ -4,7 +4,7 @@ let totalPoints = 0
 
 let topButtons = document.getElementById("top-buttons")
 let start = document.getElementById("start")
-let QAArea = document.getElementById("div2")
+let QAArea = document.getElementById("game-area")
 
 let colors = ["red", "blue"]
 let shapes = ["circle", "triangle"]
@@ -15,14 +15,14 @@ let triangle = 0
 
 let userEnteredRed = 0
 let userEnteredBlue = 0
+let userEnteredCircle = 0
+let userEnteredTriangle = 0
 
 start.addEventListener("click", showImage);
 
 function showImage() {
     
     QAArea.classList.add("question-and-answer")
-    QAArea.innerHTML = ""
-    QAArea.innerHTML = `<br>Round starting...`
     let round = document.getElementById("round")
     let score = document.getElementById("score")
     round.innerHTML = `Round<br>${currentRound}/${totalRounds}`
@@ -65,6 +65,8 @@ function showImage() {
     setTimeout(function () {
         console.log("Number of red displayed = "+red)
         console.log("Number of blue displayed = "+blue)
+        console.log("Number of circle displayed = "+circle)
+        console.log("Number of triangle displayed = "+triangle)
         let circleList = document.getElementsByClassName("circle")
         let triangleList = document.getElementsByClassName("triangle")
         while (circleList.length > 0) {
@@ -74,9 +76,9 @@ function showImage() {
             triangleList[triangleList[0].remove()]
         }
 
-        let QAArea = document.getElementById("div2")
+        let QAArea = document.getElementById("game-area")
         QAArea.classList.add("question-and-answer")
-                
+
         let titleRed = document.createElement("span");
         titleRed.innerHTML = `<br>How many red?`;
         let inputRed = document.createElement("input");
@@ -92,13 +94,13 @@ function showImage() {
         let titleCircle = document.createElement("span");
         titleCircle.innerHTML = `<br>How many circles?`;
         let inputCircle = document.createElement("input");
-        inputCircle.setAttribute("id", "red");
+        inputCircle.setAttribute("id", "circle");
         QAArea.append(titleCircle, inputCircle);
 
         let titleTriangle = document.createElement("span");
         titleTriangle.innerHTML = `<br>How many triangles?`;
         let inputTriangle = document.createElement("input");        
-        inputTriangle.setAttribute("id", "blue");
+        inputTriangle.setAttribute("id", "triangle");
         QAArea.append(titleTriangle, inputTriangle);
 
         let submit = document.createElement("button");
@@ -113,27 +115,42 @@ function showImage() {
 
     function checkQuantity() {
 
-        const colorInputs = [...document.querySelectorAll('input')]
-        console.log(colorInputs)
+        QAArea.classList.add("question-and-answer")
 
-        colorInputs.forEach(colorInput => {
-            if (colorInput.getAttribute("id") == "red") {
-                userEnteredRed = colorInput.value
+        const inputs = [...document.querySelectorAll('input')]
+        console.log(inputs)
+
+        inputs.forEach(input => {
+            if (input.getAttribute("id") == "red") {
+                userEnteredRed = input.value
+            }
+            if (input.getAttribute("id") == "blue") {
+                userEnteredBlue = input.value
+            }
+            if (input.getAttribute("id") == "circle") {
+                userEnteredCircle = input.value
             } else {
-                userEnteredBlue = colorInput.value
+                userEnteredTriangle = input.value
             }
         })
 
         console.log("userEnteredRed = " + userEnteredRed)
         console.log("userEnteredBlue = " + userEnteredBlue)
+        console.log("userEnteredCircle = " + userEnteredCircle)
+        console.log("userEnteredTriangle = " + userEnteredTriangle)
 
         let currentRoundPoints = 0;
             
-        if ((userEnteredRed == red ) && (userEnteredBlue == blue )) {
-            currentRoundPoints += currentRound * 2
-        } else if ((userEnteredRed != red ) && (userEnteredBlue != blue )) {
-            currentRoundPoints += 0
-        } else {
+        if (userEnteredRed == red) {
+            currentRoundPoints += currentRound
+        }
+        if (userEnteredBlue == blue) {
+            currentRoundPoints += currentRound
+        }
+        if (userEnteredCircle == circle) {
+            currentRoundPoints += currentRound
+        }
+        if (userEnteredTriangle == triangle) {
             currentRoundPoints += currentRound
         }
 
@@ -143,8 +160,8 @@ function showImage() {
 
         // Check round number
         if (currentRound < totalRounds) {
-            let QAArea = document.getElementById("div2")
-            QAArea.innerHTML = `<br>You scored ${currentRoundPoints} out of ${currentRound*2} points <br> in this round<br>`;
+            let QAArea = document.getElementById("game-area")
+            QAArea.innerHTML = `<br>You scored ${currentRoundPoints} out of ${currentRound*4} points <br> in this round<br>`;
             currentRound++
             let nextRoundButton = document.createElement("button");
             nextRoundButton.textContent = "Next Round";
@@ -155,14 +172,16 @@ function showImage() {
             // Score each round depends on # of questions right
         } else {
             let topButtons = document.getElementById("top-buttons")
-            let QAArea = document.getElementById("div2")
+            let QAArea = document.getElementById("game-area")
+            QAArea.classList.add("question-and-answer")
             QAArea.innerHTML = "";
             let gameFinished = document.createElement("text");
-            gameFinished.innerHTML = `<br>You scored ${currentRoundPoints} out of ${currentRound*2} points <br> in this round<br>
+            gameFinished.innerHTML = `<br>You scored ${currentRoundPoints} out of ${currentRound*4} points <br> in this round<br>
             <br><br>Congrats! Your final score is ${totalPoints}<br> To play again, click the "Start" button above`
             QAArea.append(gameFinished);
             let start = document.createElement("button");
             start.setAttribute("id", "start");
+            start.classList.add("game-button")
             start.textContent = "Start";
             topButtons.append(start)
             currentRound = 1
