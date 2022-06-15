@@ -1,4 +1,3 @@
-// make global variables and check comments
 let currentRound = 1
 let totalRounds = 5
 let totalPoints = 0
@@ -7,10 +6,12 @@ let topButtons = document.getElementById("top-buttons")
 let start = document.getElementById("start")
 let QAArea = document.getElementById("div2")
 
-// let colors = ["red", "orange", "yellow", "green", "blue", "purple", "black"]
 let colors = ["red", "blue"]
+let shapes = ["circle", "triangle"]
 let red = 0
 let blue = 0
+let circle = 0
+let triangle = 0
 
 let userEnteredRed = 0
 let userEnteredBlue = 0
@@ -21,14 +22,6 @@ function showImage() {
     
     QAArea.classList.add("question-and-answer")
     QAArea.innerHTML = ""
-    // setTimeout(async function time() {
-    //     QAArea.innerHTML = `<br>Get ready in ${t}`
-    // }, 1000)
-    // for (let t = 4; t >= 0; t--) {
-    //     setTimeout(async function time() {
-    //         QAArea.innerHTML = `<br>Get ready in ${t}`
-    //     }, 1000)
-    // }
     QAArea.innerHTML = `<br>Round starting...`
     let round = document.getElementById("round")
     let score = document.getElementById("score")
@@ -48,9 +41,16 @@ function showImage() {
     for (let i = 1; i <= currentRound*4; i++) {
         console.log(QAArea)
         let shape = document.createElement('div')
-        shape.classList.add("circle")
-        let color = colors[Math.floor( Math.random() * colors.length )];
-        shape.style.background = color
+        shape.classList.add(shapes[Math.floor( Math.random() * shapes.length )])
+        let color = colors[Math.floor( Math.random() * colors.length )]
+        if (shape.classList.contains("circle")) {
+            shape.style.background = color
+            circle++
+        } else {
+            shape.style.borderBottomColor = color
+            // shape.setAttribute("border-bottom", `100px solid ${color}`)
+            triangle++
+        }
         switch (color) {
             case "red":
                 red++;
@@ -66,8 +66,12 @@ function showImage() {
         console.log("Number of red displayed = "+red)
         console.log("Number of blue displayed = "+blue)
         let circleList = document.getElementsByClassName("circle")
+        let triangleList = document.getElementsByClassName("triangle")
         while (circleList.length > 0) {
             circleList[circleList[0].remove()]
+        }
+        while (triangleList.length > 0) {
+            triangleList[triangleList[0].remove()]
         }
 
         let QAArea = document.getElementById("div2")
@@ -85,16 +89,27 @@ function showImage() {
         inputBlue.setAttribute("id", "blue");
         QAArea.append(titleBlue, inputBlue);
 
+        let titleCircle = document.createElement("span");
+        titleCircle.innerHTML = `<br>How many circles?`;
+        let inputCircle = document.createElement("input");
+        inputCircle.setAttribute("id", "red");
+        QAArea.append(titleCircle, inputCircle);
+
+        let titleTriangle = document.createElement("span");
+        titleTriangle.innerHTML = `<br>How many triangles?`;
+        let inputTriangle = document.createElement("input");        
+        inputTriangle.setAttribute("id", "blue");
+        QAArea.append(titleTriangle, inputTriangle);
+
         let submit = document.createElement("button");
-        submit.classList.add("submit");
+        submit.classList.add("submit", "game-button");
         submit.textContent = "Submit";
-        submit.setAttribute("id", "red");  
         QAArea.innerHTML += "<br><br>"      
         QAArea.append(submit);
         
         submit.addEventListener("click", checkQuantity);
 
-    }, 5000)
+    }, 1000)
 
     function checkQuantity() {
 
@@ -133,7 +148,7 @@ function showImage() {
             currentRound++
             let nextRoundButton = document.createElement("button");
             nextRoundButton.textContent = "Next Round";
-            nextRoundButton.setAttribute("button-for", "next round");
+            nextRoundButton.classList.add("game-button");
             QAArea.append(nextRoundButton);
             nextRoundButton.addEventListener("click", showImage);
             // Higher score for harder rounds
