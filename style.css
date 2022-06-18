@@ -2,17 +2,10 @@
 
 body {
     text-align: center;
-    background-color: chocolate;
+    /* Image by "https://pixabay.com/users/goodlynx-135214/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2817099"
+    Alex S. from "https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2817099" Pixabay */
     background-image: url("CircleAndTriangle.jpg");
     background-size: 25%;
-    /* Image by <a href="https://pixabay.com/users/goodlynx-135214/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2817099">Alex S.</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2817099">Pixabay</a>; */
-}
-
-img {
-    z-index: -1;
-    position: absolute;
-    width: 100%;
-    background-size: cover;
 }
 
 h1 {
