@@ -4,7 +4,7 @@
 # Click on "Start" to start the game.
 # Round one will start immediately. You have 6 seconds to memorize the number of red shapes, blue shapes, circles, and triangles in the game area. To increase the challenge, there won't be a timer displayed.
 # Afterwards, the shapes disappear, and you will input these numbers. Click the "Submit" button to finalize your answers. 
-# Afterwards, you will find out how many points you earned. The number of points earned that round is the number of questions correct times the round number.
+# Next, you will find out how many points you earned. The number of points earned that round is the number of questions correct times the round number.
 # Click the "Next Round" button to immediately start the next round. Each round increases the number of shapes
 # The first two rounds give you 6 seconds. Rounds 3 and 4 give you 9 seconds. Round 5 is 12 seconds. 
 
