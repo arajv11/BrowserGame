@@ -28,6 +28,7 @@ function showImage() {
     score.innerHTML = `Score<br>${totalPoints}`
     // Remove start button after starting the game
     if (currentRound == 1) {
+        let start = document.getElementById("start")
         start.remove()
     }
 
